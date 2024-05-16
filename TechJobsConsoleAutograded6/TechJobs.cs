@@ -142,12 +142,14 @@ namespace TechJobsConsoleAutograded6
                 foreach (var entry in someJobs)
                 {
                     StringBuilder output = new StringBuilder();
+
+                    output.Append("*****" + Environment.NewLine);
                     foreach(KeyValuePair<string, string> header in entry) 
                     {
-                        Console.WriteLine($"{header.Key}: {header.Value}");
+                        output.Append($"{header.Key}: {header.Value}" + Environment.NewLine);
                     }
-                    // output.AppendNewLine("*****" + Environment.NewLine);
-                    Console.WriteLine("*****" + Environment.NewLine);
+                    output.AppendLine("*****");
+                    Console.WriteLine(output.ToString());
                 }
 
             }
