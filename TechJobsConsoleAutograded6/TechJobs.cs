@@ -143,19 +143,19 @@ namespace TechJobsConsoleAutograded6
                 {
                     StringBuilder output = new StringBuilder();
 
-                    output.Append("*****" + Environment.NewLine);
+                    output.Append(Environment.NewLine + "*****" + Environment.NewLine);
                     foreach(KeyValuePair<string, string> header in entry) 
                     {
                         output.Append($"{header.Key}: {header.Value}" + Environment.NewLine);
                     }
-                    output.AppendLine("*****");
+                    output.Append("*****");
                     Console.WriteLine(output.ToString());
                 }
 
             }
              else 
              {
-                Console.WriteLine("No Results");
+                Console.WriteLine("No results");
              }
         }
         }
