@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace TechJobsConsoleAutograded6
 {
@@ -71,9 +72,10 @@ namespace TechJobsConsoleAutograded6
                         List<Dictionary<string, string>> searchResults = JobData.FindByColumnAndValue(columnChoice, searchTerm);
                         PrintJobs(searchResults);
                     }
-                }
+                
 
             }
+        }
         }
 
         /*
@@ -135,8 +137,26 @@ namespace TechJobsConsoleAutograded6
         // TODO: complete the PrintJobs method.
         public void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
-            Console.WriteLine("PrintJobs is not implemented yet");
+            if(someJobs.Count > 0)
+            {
+                foreach (var entry in someJobs)
+                {
+                    StringBuilder output = new StringBuilder();
+                    foreach(KeyValuePair<string, string> header in entry) 
+                    {
+                        Console.WriteLine($"{header.Key}: {header.Value}");
+                    }
+                    // output.AppendNewLine("*****" + Environment.NewLine);
+                    Console.WriteLine("*****" + Environment.NewLine);
+                }
+
+            }
+             else 
+             {
+                Console.WriteLine("No Results");
+             }
+        }
         }
     }
-}
+
 
