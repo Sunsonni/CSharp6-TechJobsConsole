@@ -8,11 +8,23 @@ namespace TechJobsConsoleAutograded6
         static List<Dictionary<string, string>> AllJobs = new List<Dictionary<string, string>>();
         static bool IsDataLoaded = false;
 
+        public static List<Dictionary<string, string>> DeepCloning()
+        {
+            List<Dictionary<string, string>> AllJobsCopy = new List<Dictionary<string, string>>();
+            foreach (Dictionary<string, string> row in AllJobs) 
+            {
+                Dictionary<string, string> copy = new Dictionary<string, string>(row);
+                AllJobsCopy.Add(copy);
+            }
+            return AllJobsCopy;
+        }
+
         public static List<Dictionary<string, string>> FindAll()
         {
             LoadData();
-            return AllJobs;
-        }
+
+            return DeepCloning();
+        } 
 
         /*
          * Returns a list of all values contained in a given column,
@@ -33,7 +45,7 @@ namespace TechJobsConsoleAutograded6
                     values.Add(aValue);
                 }
             }
-
+            values.Sort();
             return values;
         }
 
@@ -41,7 +53,6 @@ namespace TechJobsConsoleAutograded6
          * Search all columns for the given term
          */
 
-        //TODO: Complete the FindByValue method
         public static List<Dictionary<string, string>> FindByValue(string value)
         {
             // load data, if not already loaded
@@ -53,6 +64,7 @@ namespace TechJobsConsoleAutograded6
             {
                 foreach (KeyValuePair<string, string> item in row) 
                 {   
+            //case insensitive by using index to see if substring is in value
                 if(item.Value.IndexOf(value, StringComparison.OrdinalIgnoreCase) >= 0)
                 {
                     if (!jobList.Contains(row))
@@ -84,12 +96,12 @@ namespace TechJobsConsoleAutograded6
                 string aValue = row[column];
 
 
-                //TODO: Make search case-insensitive
                 if (aValue.IndexOf(value, StringComparison.OrdinalIgnoreCase) >= 0)
                 {
                     jobs.Add(row);
                 }
             }
+            
 
             return jobs;
         }
